@@ -13,12 +13,13 @@ public class Vehicle implements Serializable {
     @Id
     @SequenceGenerator(name = "vehicleSeqGen", sequenceName = "seq_id_vehicle", initialValue = 5, allocationSize = 100)
     @GeneratedValue(generator = "vehicleSeqGen")
+    @Column(name = "ID")
     private Long id;
 
     @Column(name = "REG_NUMBER")
     protected String vehicleNumber;
 
-    @Column(name = "REG_NUMBER")
+    @Column(name = "WEIGHT")
     protected Integer vehicleWeight;
 
     @Column(name = "VEHICLE_TYPE")

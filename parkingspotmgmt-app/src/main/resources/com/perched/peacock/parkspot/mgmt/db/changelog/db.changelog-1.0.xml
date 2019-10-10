@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+    <changeSet author="Venkata Vallabhaneni" id="changelog-1.0">
+
+
+        <createTable tableName="PARKINGLOTS">
+            <column name="LOT_ID" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"
+                             unique="true"/>
+            </column>
+            <column name="LOT_NAME" type="VARCHAR(50)">
+                <constraints nullable="true" unique="false"/>
+            </column>
+
+        </createTable>
+        <createSequence
+                incrementBy="1"
+                minValue="5"
+                sequenceName="seq_id_parkinglot"
+                startValue="5"/>
+
+
+        <createTable tableName="PARKINGSPOTS">
+            <column name="SPOT_ID" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"
+                             unique="true"/>
+            </column>
+            <column name="SPOT_TYPE" type="VARCHAR(20)">
+                <constraints nullable="true" unique="false"/>
+            </column>
+            <column name="LOT_ID" type="BIGINT">
+                <constraints nullable="true" unique="false"/>
+            </column>
+            <column name="SPOT_OCCUPIED" type="BOOLEAN">
+                <constraints nullable="true" unique="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="LOT_ID"
+                                 baseTableName="PARKINGSPOTS"
+                                 constraintName="fk_parkingspots_parkinglots"
+                                 referencedColumnNames="LOT_ID"
+                                 referencedTableName="PARKINGLOTS"/>
+        <createSequence
+                incrementBy="1"
+                minValue="5"
+                sequenceName="seq_id_parkingspot"
+                startValue="5"/>
+
+
+        <createTable tableName="VEHICLES">
+            <column name="ID" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"
+                             unique="true"/>
+            </column>
+            <column name="REG_NUMBER" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="WEIGHT" type="BIGINT">
+                <constraints nullable="true" unique="false"/>
+            </column>
+            <column name="VEHICLE_TYPE" type="VARCHAR(20)">
+                <constraints nullable="true" unique="false"/>
+            </column>
+            <column name="SPOT_ID" type="BIGINT">
+                <constraints nullable="true" unique="false"/>
+            </column>
+        </createTable>
+
+        <createSequence
+                incrementBy="1"
+                minValue="5"
+                sequenceName="seq_id_vehicle"
+                startValue="5"/>
+
+    </changeSet>
+</databaseChangeLog> 

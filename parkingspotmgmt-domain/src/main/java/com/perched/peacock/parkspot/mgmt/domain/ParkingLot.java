@@ -18,7 +18,7 @@ public class ParkingLot implements Serializable {
     @Column(name = "LOT_ID")
     private Long id;
 
-    @Column(name = "LOT_ID")
+    @Column(name = "LOT_NAME")
     private String name;
 
     @OneToMany(mappedBy = "parkingLotId", cascade = CascadeType.ALL, orphanRemoval = true)

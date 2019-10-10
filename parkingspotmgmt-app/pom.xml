@@ -32,10 +32,41 @@
                 </executions>
             </plugin>
 
+           <!--<plugin>
+                <groupId>io.fabric8</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.31.0</version>
+                <executions>
+                    <execution>
+                        <id>docker-build</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <images>
+                        <image>
+                            <name>parkingspotmgmt-app:${project.version}</name>
+                            <alias>parkingspotmgmt-app</alias>
+                            <build>
+                                <dockerFileDir>${project.basedir}/docker</dockerFileDir>
+                            </build>
+                        </image>
+                        <image>
+                            <external>
+                                <type>compose</type>
+                                <basedir>${project.basedir}/docker</basedir>
+                                <composeFile>docker-compose.yml</composeFile>
+                            </external>
+                        </image>
+                    </images>
+                </configuration>
 
+            </plugin>-->
         </plugins>
     </build>
-
 
     <dependencies>
         <dependency>
@@ -84,7 +115,10 @@
             <artifactId>springfox-swagger2</artifactId>
         </dependency>
 
-
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

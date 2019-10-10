@@ -10,7 +10,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+
 @Transactional
 public class ParkingLotServiceImpl implements ParkingLotService {
 

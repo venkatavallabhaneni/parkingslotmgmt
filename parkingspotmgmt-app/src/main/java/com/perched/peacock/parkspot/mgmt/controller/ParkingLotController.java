@@ -1,4 +1,4 @@
-package com.perched.peacock.parkslot.mgmt.controller;
+package com.perched.peacock.parkspot.mgmt.controller;
 
 import com.perched.peacock.parkspot.mgmt.service.ParkingLotService;
 import org.springframework.beans.factory.annotation.Autowired;
