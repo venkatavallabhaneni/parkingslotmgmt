@@ -1,9 +1,10 @@
 package com.perched.peacock.parkspot.mgmt.domain;
 
-import lombok.Data;
+        import io.swagger.annotations.ApiModelProperty;
+        import lombok.Data;
 
-import javax.persistence.*;
-import java.io.Serializable;
+        import javax.persistence.*;
+        import java.io.Serializable;
 
 @Data
 @Entity(name = "Vehicle")
@@ -14,17 +15,20 @@ public class Vehicle implements Serializable {
     @SequenceGenerator(name = "vehicleSeqGen", sequenceName = "seq_id_vehicle", initialValue = 5, allocationSize = 100)
     @GeneratedValue(generator = "vehicleSeqGen")
     @Column(name = "ID")
+    @ApiModelProperty(notes = "vehicle id", example = "123")
     private Long id;
-
+    @ApiModelProperty(notes = "vehicle registration number", example = "KA05ML3011")
     @Column(name = "REG_NUMBER")
-    protected String vehicleNumber;
+    private String vehicleNumber;
 
+    @ApiModelProperty(notes = "Approximate weight of the vehicle in KG's", example = "200")
     @Column(name = "WEIGHT")
-    protected Integer vehicleWeight;
+    private Integer vehicleWeight;
+
 
     @Column(name = "VEHICLE_TYPE")
     @Enumerated(EnumType.STRING)
-    protected VehicleType vehicleType;
+    private VehicleType vehicleType;
 
     @OneToOne
     @MapsId

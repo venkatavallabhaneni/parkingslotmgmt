@@ -1,5 +1,6 @@
 package com.perched.peacock.parkspot.mgmt.service;
 
+import com.perched.peacock.parkspot.mgmt.dao.ParkingLotDao;
 import com.perched.peacock.parkspot.mgmt.domain.ParkingLot;
 import org.junit.Before;
 import org.mockito.InjectMocks;

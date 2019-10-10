@@ -1,8 +1,9 @@
-package com.perched.peacock.parkspot.mgmt.service;
+package com.perched.peacock.parkspot.mgmt.dao;
 
 import com.perched.peacock.parkspot.mgmt.domain.ParkingLot;
 import com.perched.peacock.parkspot.mgmt.domain.ParkingSpot;
 import com.perched.peacock.parkspot.mgmt.domain.VehicleType;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
@@ -14,6 +15,5 @@ public interface ParkingLotDao extends CrudRepository<ParkingLot, Number> {
 
     Optional<ParkingLot> findByName(String lotName);
 
-    Optional<List<ParkingSpot>> findVacantParkingSpotsByVehicleTypeAndLotId(VehicleType vehicleType, Long lotId);
 
 }

@@ -14,8 +14,7 @@
 
 
     <build>
-        <finalName>${project.artifactId}</finalName>
-        <plugins>
+         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -118,6 +117,12 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>log4j-over-slf4j</artifactId>
+
         </dependency>
     </dependencies>
 

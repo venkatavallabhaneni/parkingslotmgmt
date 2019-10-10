@@ -11,6 +11,12 @@ public interface ParkingLotService {
 
     Optional<ParkingLot> findByLotId(Long lotId);
 
+    List<ParkingLot> findAll();
+
+    List<ParkingLot> create(List<ParkingLot> parkingLots);
+
+    boolean delete(ParkingLot parkingLot);
+
     Optional<ParkingLot> findByLotName(String lotName);
 
     Optional<List<ParkingSpot>> findVacantParkingSpotsByVehicleTypeAndLotId(VehicleType vehicleType, Long lotId);

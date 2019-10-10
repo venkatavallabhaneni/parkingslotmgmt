@@ -23,7 +23,7 @@ public class Application {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.perched.peacock.parkslot.mgmt.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.perched.peacock.parkspot.mgmt.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
