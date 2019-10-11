@@ -14,7 +14,7 @@
 
 
     <build>
-         <plugins>
+        <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -31,39 +31,39 @@
                 </executions>
             </plugin>
 
-           <!--<plugin>
-                <groupId>io.fabric8</groupId>
-                <artifactId>docker-maven-plugin</artifactId>
-                <version>0.31.0</version>
-                <executions>
-                    <execution>
-                        <id>docker-build</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>build</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <images>
-                        <image>
-                            <name>parkingspotmgmt-app:${project.version}</name>
-                            <alias>parkingspotmgmt-app</alias>
-                            <build>
-                                <dockerFileDir>${project.basedir}/docker</dockerFileDir>
-                            </build>
-                        </image>
-                        <image>
-                            <external>
-                                <type>compose</type>
-                                <basedir>${project.basedir}/docker</basedir>
-                                <composeFile>docker-compose.yml</composeFile>
-                            </external>
-                        </image>
-                    </images>
-                </configuration>
+            <!--<plugin>
+                 <groupId>io.fabric8</groupId>
+                 <artifactId>docker-maven-plugin</artifactId>
+                 <version>0.31.0</version>
+                 <executions>
+                     <execution>
+                         <id>docker-build</id>
+                         <phase>package</phase>
+                         <goals>
+                             <goal>build</goal>
+                         </goals>
+                     </execution>
+                 </executions>
+                 <configuration>
+                     <images>
+                         <image>
+                             <name>parkingspotmgmt-app:${project.version}</name>
+                             <alias>parkingspotmgmt-app</alias>
+                             <build>
+                                 <dockerFileDir>${project.basedir}/docker</dockerFileDir>
+                             </build>
+                         </image>
+                         <image>
+                             <external>
+                                 <type>compose</type>
+                                 <basedir>${project.basedir}/docker</basedir>
+                                 <composeFile>docker-compose.yml</composeFile>
+                             </external>
+                         </image>
+                     </images>
+                 </configuration>
 
-            </plugin>-->
+             </plugin>-->
         </plugins>
     </build>
 
@@ -128,6 +128,26 @@
             <groupId>org.slf4j</groupId>
             <artifactId>log4j-over-slf4j</artifactId>
 
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-spring</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.masterthought</groupId>
+            <artifactId>cucumber-reporting</artifactId>
         </dependency>
     </dependencies>
 
