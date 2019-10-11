@@ -4,6 +4,8 @@ import com.perched.peacock.parkspot.mgmt.dao.ParkingLotDao;
 import com.perched.peacock.parkspot.mgmt.domain.ParkingLot;
 import com.perched.peacock.parkspot.mgmt.domain.ParkingSpot;
 import com.perched.peacock.parkspot.mgmt.domain.VehicleType;
+import com.perched.peacock.parkspot.mgmt.dto.ParkingLotDto;
+import com.perched.peacock.parkspot.mgmt.dto.ParkingSpotDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,32 +22,32 @@ public class ParkingLotServiceImpl implements ParkingLotService {
     private ParkingLotDao parkingLotDao;
 
     @Override
-    public Optional<ParkingLot> findByLotId(Long lotId) {
+    public Optional<ParkingLotDto> findByLotId(Long lotId) {
         return Optional.empty();
     }
 
     @Override
-    public Optional<ParkingLot> findByLotName(String lotName) {
+    public Optional<ParkingLotDto> findByLotName(String lotName) {
         return Optional.empty();
     }
 
     @Override
-    public List<ParkingLot> findAll() {
+    public List<ParkingLotDto> findAll() {
         return Collections.emptyList();
     }
 
     @Override
-    public Optional<List<ParkingSpot>> findVacantParkingSpotsByVehicleTypeAndLotId(VehicleType vehicleType, Long lotId) {
+    public Optional<List<ParkingSpotDto>> findVacantParkingSpotsByVehicleTypeAndLotId(VehicleType vehicleType, Long lotId) {
         return Optional.empty();
     }
 
     @Override
-    public List<ParkingLot> create(List<ParkingLot> parkingLots) {
+    public List<ParkingLotDto> create(List<ParkingLotDto> parkingLots) {
         return Collections.emptyList();
     }
 
     @Override
-    public boolean delete(ParkingLot parkingLot) {
+    public boolean delete(ParkingLotDto parkingLot) {
         return false;
     }
 }
