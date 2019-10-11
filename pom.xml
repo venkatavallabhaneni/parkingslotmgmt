@@ -41,6 +41,7 @@
         <module>parkingspotmgmt-service</module>
         <module>parkingspotmgmt-dao</module>
         <module>parkingspotmgmt-app</module>
+        <module>parkingspotmgmt-security</module>
     </modules>
 
 
@@ -59,8 +60,17 @@
                 <version>${spring.fox.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.springframework.security.oauth</groupId>
+                <artifactId>spring-security-oauth2</artifactId>
+                <version>2.3.6.RELEASE</version>
+            </dependency>
 
-
+            <dependency>
+                <groupId>org.springframework.security.oauth.boot</groupId>
+                <artifactId>spring-security-oauth2-autoconfigure</artifactId>
+                <version>2.1.9.RELEASE</version>
+            </dependency>
             <dependency>
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-swagger2</artifactId>
@@ -74,7 +84,7 @@
                 <version>${spring.boot.version}</version>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test -->
+
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-test</artifactId>

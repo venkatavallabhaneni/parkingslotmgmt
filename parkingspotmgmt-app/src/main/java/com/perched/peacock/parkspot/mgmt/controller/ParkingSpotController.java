@@ -5,6 +5,7 @@ import com.perched.peacock.parkspot.mgmt.service.ParkingLotService;
 import com.perched.peacock.parkspot.mgmt.service.ParkingSpotService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class ParkingSpotController {
         this.parkingSpotService = parkingSpotService;
     }
 
-
+    @PreAuthorize("#oauth2.hasScope('read')")
     @GetMapping(value = "/{lotName}", headers = "Accept=application/json", produces = "application/json")
     @ResponseBody
     @ApiOperation(value = "get available parking spots in a  given lot", notes = "An operation to get available parking spots in a  given lot")
@@ -32,6 +33,7 @@ public class ParkingSpotController {
         return spotNumbers;
     }
 
+    @PreAuthorize("#oauth2.hasScope('write')")
     @PostMapping(value = "/book", headers = "Accept=application/json", produces = "application/json")
     @ResponseBody
     @ApiOperation(value = "book a slot", notes = "An operation to book a spot")
@@ -39,6 +41,7 @@ public class ParkingSpotController {
         return new ParkingRecord();
     }
 
+    @PreAuthorize("#oauth2.hasScope('write')")
     @PostMapping(value = "/vacate/{lotName}/{registrationNumber}", headers = "Accept=application/json", produces = "application/json")
     @ResponseBody
     @ApiOperation(value = "vacate a spot", notes = "An operation to vacate a spot")
