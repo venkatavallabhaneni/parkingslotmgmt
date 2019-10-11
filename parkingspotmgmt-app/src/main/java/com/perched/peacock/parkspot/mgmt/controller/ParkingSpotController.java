@@ -1,7 +1,7 @@
 package com.perched.peacock.parkspot.mgmt.controller;
 
 import com.perched.peacock.parkspot.mgmt.domain.*;
-import com.perched.peacock.parkspot.mgmt.service.ParkingLotService;
+import com.perched.peacock.parkspot.mgmt.dto.ParkingRecord;
 import com.perched.peacock.parkspot.mgmt.service.ParkingSpotService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/parkingspot")

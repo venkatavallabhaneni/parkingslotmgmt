@@ -20,6 +20,11 @@
 			<artifactId>parkingspotmgmt-dao</artifactId>
             <version>0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>com.perched.peacock</groupId>
+			<artifactId>parkingspotmgmt-dto</artifactId>
+			<version>0.1-SNAPSHOT</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.mockito</groupId>
