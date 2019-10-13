@@ -119,5 +119,12 @@
 
         </createTable>
     </changeSet>
+    <changeSet id="adding-book-column" author="Venkata Vallabhaneni">
+
+        <addColumn tableName="BOOKING_INFORMATION">
+            <column name="AMOUNT_PAID" type="BIGINT"></column>
+        </addColumn>
+
+    </changeSet>
 
 </databaseChangeLog> 

@@ -2,6 +2,7 @@ package com.perched.peacock.parkspot.mgmt.service;
 
 import com.perched.peacock.parkspot.mgmt.commons.BookingMapper;
 import com.perched.peacock.parkspot.mgmt.commons.ParkingSpotMapper;
+import com.perched.peacock.parkspot.mgmt.commons.Utils;
 import com.perched.peacock.parkspot.mgmt.commons.VehicleMapper;
 import com.perched.peacock.parkspot.mgmt.dao.BookingInformationDao;
 import com.perched.peacock.parkspot.mgmt.dao.ParkingSpotDao;
@@ -77,7 +78,7 @@ public class ParkingSpotServiceImpl implements ParkingSpotService {
 
         if (StringUtils.isEmpty(spotType)) {
             spots = parkingSpotDao.findVacantParkingSpotsByParkingLotIdAndOccupiedIsFalse(lotId);
-        }else {
+        } else {
 
             spots = parkingSpotDao.findVacantParkingSpotsByParkingLotIdAndParkingSpotTypeAndOccupiedIsFalse(lotId, SpotType.valueOf(spotType));
         }
@@ -106,23 +107,24 @@ public class ParkingSpotServiceImpl implements ParkingSpotService {
         toBeUpdatedList.add(firstVacantSpot);
         List<ParkingSpotDto> updatedList = this.create(toBeUpdatedList);
 
-        BookingInformation aBookingInformationDto = new BookingInformation();
-        aBookingInformationDto.setBookingTime(new Date());
-        aBookingInformationDto.setExitTime(null);
-        aBookingInformationDto.setEntryTime(new Date());
-        aBookingInformationDto.setParkingSpotId(mapper.mapDto2Entity(updatedList.get(0)));
+        BookingInformation aBookingInformation = new BookingInformation();
+        aBookingInformation.setBookingTime(new Date());
+        aBookingInformation.setExitTime(null);
+        aBookingInformation.setEntryTime(new Date());
+        aBookingInformation.setParkingSpotId(mapper.mapDto2Entity(updatedList.get(0)));
 
         Vehicle linkedVehicle = null;
         Optional<Vehicle> vehicleEntity = vehicleDao.findByVehicleNumber(vehicle.getVehicleNumber());
         if (!vehicleEntity.isPresent()) {
             linkedVehicle = vehicleDao.save(vehicleMapper.mapDto2Entity(vehicle));
-            aBookingInformationDto.setVehicleId(linkedVehicle);
+            aBookingInformation.setVehicleId(linkedVehicle);
         } else {
-            aBookingInformationDto.setVehicleId(vehicleEntity.get());
+            aBookingInformation.setVehicleId(vehicleEntity.get());
             linkedVehicle = vehicleEntity.get();
         }
 
-        BookingInformation bookingInformation = bookingInformationDao.save(aBookingInformationDto);
+
+        BookingInformation bookingInformation = bookingInformationDao.save(aBookingInformation);
         bookingInformation.setVehicleId(linkedVehicle);
         return bookingMapper.mapEntity2Dto(bookingInformation);
     }
@@ -135,6 +137,8 @@ public class ParkingSpotServiceImpl implements ParkingSpotService {
         }
         BookingInformation information = bookingInformationDao.findByVehicleIdIdAndExitTimeIsNull(vehicle.get().getId());
         information.setExitTime(new Date());
+        Double price =Utils.getTotalCost(information.getParkingSpotId().getPrice(), information.getExitTime(), information.getEntryTime());
+        information.setAmountPaid(price);
         BookingInformation vacatedDetails = bookingInformationDao.save(information);
         return bookingMapper.mapEntity2Dto(vacatedDetails);
     }

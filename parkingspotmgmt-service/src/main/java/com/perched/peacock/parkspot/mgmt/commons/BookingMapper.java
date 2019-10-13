@@ -35,19 +35,6 @@ public abstract class BookingMapper {
 
     public abstract ParkingSpotDto mapParkingSpotEntity2Dto(ParkingSpot source);
 
-    public void setTotalCost(BookingInformationDto source) {
-        if (source.getExitTime() == null) {
-            return;
-        }
-        source.setTotalCost(source.getParkingSpot().getPrice() * hoursDifference(source.getExitTime(), source.getEntryTime()));
-
-    }
-
-    private static int hoursDifference(Date date1, Date date2) {
-
-        final int MILLI_TO_HOUR = 1000 * 60 * 60;
-        return (int) (date1.getTime() - date2.getTime()) / MILLI_TO_HOUR;
-    }
 
     @AfterMapping
     public void mapDtoExtraInformation(BookingInformationDto source, @MappingTarget BookingInformation target) {
@@ -61,7 +48,6 @@ public abstract class BookingMapper {
 
         target.setParkingSpot(mapParkingSpotEntity2Dto(source.getParkingSpotId()));
         target.setVehicleDto(mapVehicleEntity2Dto(source.getVehicleId()));
-        setTotalCost(target);
 
 
     }

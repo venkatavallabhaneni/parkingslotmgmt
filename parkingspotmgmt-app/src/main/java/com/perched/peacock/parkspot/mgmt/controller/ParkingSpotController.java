@@ -36,7 +36,7 @@ public class ParkingSpotController {
     // @PreAuthorize("#oauth2.hasScope('write')")
     @PostMapping(value = "/book", headers = "Accept=application/json", produces = "application/json")
     @ResponseBody
-    @ApiOperation(value = "book a spot for a given vehicle and lot", notes = "An operation book a spot for a given vehicle and lot, all fields are manadatory except id")
+    @ApiOperation(value = "book a spot for a given vehicle and lot", notes = "An operation book a spot for a given vehicle and lot, all fields are manadatory except id, ")
     public BookingInformationDto bookAParkingSpotForAVehicle(@RequestBody BookingQuery query) {
         query.getVehicleDto().setId(null);
         BookingInformationDto bookingInformationDto = parkingSpotService.bookASpotForAGivenVehicleAndLotId(query.getVehicleDto(), query.getLotId());
@@ -54,6 +54,7 @@ public class ParkingSpotController {
         return information;
     }
 
+    // @PreAuthorize("#oauth2.hasScope('admin')")
     @PostMapping(headers = "Accept=application/json", produces = "application/json")
     @ResponseBody
     @ApiOperation(value = "Add parking Spots to a parking lot", notes = "An operation to Add parking Spots to a parking lot, Parking lotId and Price is mandatory to create parking spot")

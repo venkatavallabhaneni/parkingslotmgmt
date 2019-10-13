@@ -19,7 +19,7 @@ public class BookingInformationDto {
     private Date bookingTime;
     private Date exitTime;
     private Date entryTime;
-    private Double totalCost;
+    private Double amountPaid;
     private String bookingId;
 
 

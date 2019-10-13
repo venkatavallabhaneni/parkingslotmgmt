@@ -28,4 +28,7 @@ public class BookingInformation {
     @Column(name = "ENTRY_TIME")
     private Date entryTime;
 
+    @Column(name = "AMOUNT_PAID")
+    private Double amountPaid;
+
 }
