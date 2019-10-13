@@ -1,11 +1,9 @@
 package com.perched.peacock.parkspot.mgmt.controller;
 
-import com.perched.peacock.parkspot.mgmt.domain.*;
-import com.perched.peacock.parkspot.mgmt.dto.ParkingRecord;
+import com.perched.peacock.parkspot.mgmt.dto.*;
 import com.perched.peacock.parkspot.mgmt.service.ParkingSpotService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -22,29 +20,51 @@ public class ParkingSpotController {
         this.parkingSpotService = parkingSpotService;
     }
 
-    @PreAuthorize("#oauth2.hasScope('read')")
-    @GetMapping(value = "/{lotName}", headers = "Accept=application/json", produces = "application/json")
-    @ResponseBody
-    @ApiOperation(value = "get available parking spots in a  given lot", notes = "An operation to get available parking spots in a  given lot")
-    public List<Long> getAvailableSpotsInaLot(@PathVariable(value = "lotName") String lotName) {
 
-        List<Long> spotNumbers = new ArrayList<>();
-        return spotNumbers;
+
+    // @PreAuthorize("#oauth2.hasScope('read')")
+    @GetMapping(value = "/availability/{lotId}", headers = "Accept=application/json", produces = "application/json")
+    @ResponseBody
+    @ApiOperation(value = "get un occupied parking spots in a  given lot for a vehicle size", notes = "An operation to get un occupied parking spots in a  given lot and vehicle type ,<br>allowed vehicle types are: <ul><li>CAR</li><li>BUS</li<li>TRUCK</li><li>MOTORCYCLE</li><li>AUTO</li></ul>")
+    public List<ParkingSpotDto> getAvailableSpotsInaLot(@PathVariable(value = "lotId") Long lotId, @RequestParam(value = "vehicleType", required = false) String vehicleType) {
+
+        List<ParkingSpotDto> vacantParkingSpots = parkingSpotService.findVacantParkingSpotsByLotIdAndVehicleType(lotId, vehicleType);
+
+        return vacantParkingSpots;
     }
 
-    @PreAuthorize("#oauth2.hasScope('write')")
+    // @PreAuthorize("#oauth2.hasScope('write')")
     @PostMapping(value = "/book", headers = "Accept=application/json", produces = "application/json")
     @ResponseBody
-    @ApiOperation(value = "book a slot", notes = "An operation to book a spot")
-    public ParkingRecord allotASpotInaGivenLot(@RequestBody SpotBooking spotBooking) {
-        return new ParkingRecord();
+    @ApiOperation(value = "book a spot for a given vehicle and lot", notes = "An operation book a spot for a given vehicle and lot, all fields are manadatory except id")
+    public BookingInformationDto bookAParkingSpotForAVehicle(@RequestBody BookingQuery query) {
+        query.getVehicleDto().setId(null);
+        BookingInformationDto bookingInformationDto = parkingSpotService.bookASpotForAGivenVehicleAndLotId(query.getVehicleDto(), query.getLotId());
+
+        return bookingInformationDto;
     }
 
-    @PreAuthorize("#oauth2.hasScope('write')")
-    @PostMapping(value = "/vacate/{lotName}/{registrationNumber}", headers = "Accept=application/json", produces = "application/json")
+    // @PreAuthorize("#oauth2.hasScope('write')")
+    @PostMapping(value = "/vacate/{registrationNumber}", headers = "Accept=application/json", produces = "application/json")
     @ResponseBody
-    @ApiOperation(value = "vacate a spot", notes = "An operation to vacate a spot")
-    public ParkingRecord vacateASpot(@PathVariable(value = "lotName") String lotName, @PathVariable(value = "registrationNumber") String registrationNumber) {
-        return new ParkingRecord();
+    @ApiOperation(value = "vacate a spot for a given vehicle registration number", notes = "An operation to vacate a spot for a given vehicle registration number")
+    public BookingInformationDto vacateASpot(@PathVariable(value = "registrationNumber") String registrationNumber) {
+
+        BookingInformationDto information = parkingSpotService.vacateASpotForGivenRegNumber(registrationNumber);
+        return information;
+    }
+
+    @PostMapping(headers = "Accept=application/json", produces = "application/json")
+    @ResponseBody
+    @ApiOperation(value = "Add parking Spots to a parking lot", notes = "An operation to Add parking Spots to a parking lot, Parking lotId and Price is mandatory to create parking spot")
+    public List<ParkingSpotDto> establishParkingSpots(@RequestBody List<ParkingSpotDto> spots) {
+
+        spots.forEach(aSpot->{
+            aSpot.setParkingSpotId(null);
+            aSpot.setOccupied(false);
+        });
+
+        List<ParkingSpotDto> parkingSpots = parkingSpotService.create(spots);
+        return parkingSpots;
     }
 }

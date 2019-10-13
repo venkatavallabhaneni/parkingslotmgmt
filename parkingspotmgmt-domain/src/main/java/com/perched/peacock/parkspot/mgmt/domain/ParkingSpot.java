@@ -21,23 +21,22 @@ public class ParkingSpot implements Serializable {
     @Column(name = "SPOT_ID")
     private Long parkingSpotId;
 
-    @ApiModelProperty(notes = "A spot type or size of the spot", example = "MEDIUAM/LARGE")
+    @ApiModelProperty(notes = "A spot type or size of the spot", example = "MEDIUAM/LARGE/XTRALARGE/SMALL")
     @Column(name = "SPOT_TYPE")
     @Enumerated(EnumType.STRING)
     private SpotType parkingSpotType;
 
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "LOT_ID")
-    private ParkingLot parkingLotId;
+    @Column(name = "LOT_ID")
+    private Long parkingLotId;
 
     @ApiModelProperty(notes = "spot occupancy status", example = "true/false")
     @Column(name = "SPOT_OCCUPIED")
     private boolean occupied;
 
+    @Column(name = "SPOT_PRICE")
+    private Double price;
 
-    @OneToOne(mappedBy = "parkingSpot", cascade = CascadeType.ALL)
-    private Vehicle vehicle;
+
 
 
 }

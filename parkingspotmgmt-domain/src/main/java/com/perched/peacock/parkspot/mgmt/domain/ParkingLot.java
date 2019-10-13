@@ -25,8 +25,4 @@ public class ParkingLot implements Serializable {
     @Column(name = "LOT_NAME")
     private String name;
 
-    @OneToMany(mappedBy = "parkingLotId", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ParkingSpot> parkingSpots;
-
-
 }

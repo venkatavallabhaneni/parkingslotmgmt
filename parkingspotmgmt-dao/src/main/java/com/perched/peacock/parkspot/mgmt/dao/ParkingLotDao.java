@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public interface ParkingLotDao extends CrudRepository<ParkingLot, Number> {
 
-    Optional<ParkingLot> findById(Long lotId);
+    ParkingLot findById(Long lotId);
 
     Optional<ParkingLot> findByName(String lotName);
 

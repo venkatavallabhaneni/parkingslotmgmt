@@ -1,44 +1,59 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                              http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
     <parent>
-		<groupId>com.perched.peacock</groupId>
-		<artifactId>parkingspotmgmt</artifactId>
-		<version>0.1-SNAPSHOT</version>
-	</parent>
-	<artifactId>parkingspotmgmt-service</artifactId>
-	<packaging>jar</packaging>
+        <groupId>com.perched.peacock</groupId>
+        <artifactId>parkingspotmgmt</artifactId>
+        <version>0.1-SNAPSHOT</version>
+    </parent>
+    <artifactId>parkingspotmgmt-service</artifactId>
+    <packaging>jar</packaging>
 
-	<name>Parking spot mgmt  service layer</name>
-	
-	<dependencies>
-		<dependency>
-			<groupId>com.perched.peacock</groupId>
-			<artifactId>parkingspotmgmt-dao</artifactId>
+    <name>Parking spot mgmt service layer</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.perched.peacock</groupId>
+            <artifactId>parkingspotmgmt-dao</artifactId>
             <version>0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.perched.peacock</groupId>
-			<artifactId>parkingspotmgmt-dto</artifactId>
-			<version>0.1-SNAPSHOT</version>
-		</dependency>
+        </dependency>
+        <dependency>
+            <groupId>com.perched.peacock</groupId>
+            <artifactId>parkingspotmgmt-dto</artifactId>
+            <version>0.1-SNAPSHOT</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
-			<scope>test</scope>
-		</dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <scope>test</scope>
+        </dependency>
 
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
 
-			<scope>test</scope>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/junit/junit -->
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/uk.co.jemos.podam/podam -->
+        <dependency>
+            <groupId>uk.co.jemos.podam</groupId>
+            <artifactId>podam</artifactId>
+            <scope>test</scope>
+        </dependency>
 
-	</dependencies>
+        <!-- https://mvnrepository.com/artifact/org.mapstruct/mapstruct-jdk8 -->
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-jdk8</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 </project>

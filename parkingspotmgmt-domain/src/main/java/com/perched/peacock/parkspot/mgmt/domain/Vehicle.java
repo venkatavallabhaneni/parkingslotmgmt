@@ -1,10 +1,10 @@
 package com.perched.peacock.parkspot.mgmt.domain;
 
-        import io.swagger.annotations.ApiModelProperty;
-        import lombok.Data;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
-        import javax.persistence.*;
-        import java.io.Serializable;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @Entity(name = "Vehicle")
@@ -25,12 +25,10 @@ public class Vehicle implements Serializable {
     @Column(name = "WEIGHT")
     private Integer vehicleWeight;
 
-
     @Column(name = "VEHICLE_TYPE")
     @Enumerated(EnumType.STRING)
     private VehicleType vehicleType;
 
-    @OneToOne
-    @MapsId
-    private ParkingSpot parkingSpot;
+    @Column(name = "VEHICLE_OWNER")
+    private String ownerName;
 }

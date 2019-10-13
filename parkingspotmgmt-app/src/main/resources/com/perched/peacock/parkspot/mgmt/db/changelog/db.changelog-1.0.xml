@@ -69,7 +69,10 @@
             <column name="SPOT_ID" type="BIGINT">
                 <constraints nullable="true" unique="false"/>
             </column>
+
+
         </createTable>
+
 
         <createSequence
                 incrementBy="1"
@@ -78,4 +81,43 @@
                 startValue="5"/>
 
     </changeSet>
+
+    <changeSet id="light-weight-design" author="Venkata Vallabhaneni">
+        <dropColumn columnName="SPOT_ID" tableName="VEHICLES"/>
+        <addColumn tableName="PARKINGSPOTS">
+            <column name="SPOT_PRICE" type="BIGINT"></column>
+        </addColumn>
+        <addColumn tableName="VEHICLES">
+            <column name="VEHICLE_OWNER" type="VARCHAR2(50)"/>
+        </addColumn>
+        <createSequence
+                incrementBy="5"
+                minValue="10000"
+                sequenceName="seq_id_booking"
+                startValue="10000"/>
+        <createTable tableName="BOOKING_INFORMATION">
+            <column name="BOOKING_ID" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"
+                             unique="true"/>
+            </column>
+            <column name="SPOT_ID" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VEHICLE_ID" type="BIGINT">
+                <constraints nullable="true" unique="false"/>
+            </column>
+            <column name="BOOKING_TIME" type="datetime">
+                <constraints nullable="true" unique="false"/>
+            </column>
+            <column name="EXIT_TIME" type="datetime">
+                <constraints nullable="true" unique="false"/>
+            </column>
+            <column name="ENTRY_TIME" type="datetime">
+                <constraints nullable="true" unique="false"/>
+            </column>
+
+
+        </createTable>
+    </changeSet>
+
 </databaseChangeLog> 

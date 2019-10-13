@@ -14,7 +14,7 @@ public abstract class ParkingLotMapper {
 
     public abstract ParkingLot mapDto2Entity(ParkingLotDto source);
 
-    public abstract List<ParkingLotDto> mapEntity2DtoList(List<ParkingLot> source);
+    public abstract List<ParkingLotDto> mapEntities2Dtos(List<ParkingLot> source);
 
-    public abstract List<ParkingLot> mapDto2Entities(List<ParkingLotDto> source);
+    public abstract List<ParkingLot> mapDtos2Entities(List<ParkingLotDto> source);
 }

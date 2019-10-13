@@ -1,9 +1,15 @@
 package com.perched.peacock.parkspot.mgmt.dto;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 @Data
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
 public class VehicleDto {
 
 
@@ -20,6 +26,8 @@ public class VehicleDto {
     @ApiModelProperty(notes = "Vehicle type", example = "Bus/Van")
     private String vehicleType;
 
-    @ApiModelProperty(notes = "Parking spot in which the vehicle is parked", example = "123")
-    private Long parkingSpotId;
+    @ApiModelProperty(notes = "Vehicle owner name", example = "vallabhaneni")
+    private String ownerName;
+
+
 }

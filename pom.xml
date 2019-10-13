@@ -151,11 +151,13 @@
                 <version>1.7.28</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/org.mapstruct/mapstruct -->
+            <!-- https://mvnrepository.com/artifact/org.mapstruct/mapstruct-jdk8 -->
             <dependency>
                 <groupId>org.mapstruct</groupId>
-                <artifactId>mapstruct</artifactId>
+                <artifactId>mapstruct-jdk8</artifactId>
                 <version>1.3.1.Final</version>
             </dependency>
+
 
             <dependency>
                 <groupId>net.masterthought</groupId>
@@ -177,6 +179,13 @@
                 <artifactId>cucumber-spring</artifactId>
                 <version>${cucumber.version}</version>
             </dependency>
+            <!-- https://mvnrepository.com/artifact/org.mapstruct/mapstruct-processor -->
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-processor</artifactId>
+                <version>1.3.1.Final</version>
+                <scope>provided</scope>
+            </dependency>
 
             <dependency>
                 <groupId>io.cucumber</groupId>
@@ -184,6 +193,14 @@
                 <version>${cucumber.version}</version>
                 <scope>test</scope>
             </dependency>
+            <!-- https://mvnrepository.com/artifact/uk.co.jemos.podam/podam -->
+            <dependency>
+                <groupId>uk.co.jemos.podam</groupId>
+                <artifactId>podam</artifactId>
+                <version>7.2.3.RELEASE</version>
+                <scope>test</scope>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
