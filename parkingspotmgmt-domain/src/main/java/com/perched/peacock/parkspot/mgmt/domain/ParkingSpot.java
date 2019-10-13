@@ -14,7 +14,7 @@ import java.io.Serializable;
 public class ParkingSpot implements Serializable {
 
     @Id
-    @SequenceGenerator(name = "parkingspotSeqGen", sequenceName = "seq_id_parkingspot", initialValue = 5, allocationSize = 100)
+    @SequenceGenerator(name = "parkingspotSeqGen", sequenceName = "seq_id_parkingspot", initialValue = 5, allocationSize = 1)
     @GeneratedValue(generator = "parkingspotSeqGen")
 
     @ApiModelProperty(notes = "A spot ID", example = "1234")

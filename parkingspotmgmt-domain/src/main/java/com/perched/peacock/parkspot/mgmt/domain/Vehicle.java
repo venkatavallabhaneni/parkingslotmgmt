@@ -12,7 +12,7 @@ import java.io.Serializable;
 public class Vehicle implements Serializable {
 
     @Id
-    @SequenceGenerator(name = "vehicleSeqGen", sequenceName = "seq_id_vehicle", initialValue = 5, allocationSize = 100)
+    @SequenceGenerator(name = "vehicleSeqGen", sequenceName = "seq_id_vehicle", initialValue = 5, allocationSize = 1)
     @GeneratedValue(generator = "vehicleSeqGen")
     @Column(name = "ID")
     @ApiModelProperty(notes = "vehicle id", example = "123")

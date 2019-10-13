@@ -10,7 +10,7 @@ import java.util.Date;
 @Table(name = "BOOKING_INFORMATION")
 public class BookingInformation {
     @Id
-    @SequenceGenerator(name = "bookingSeqGen", sequenceName = "seq_id_booking", initialValue = 10000, allocationSize = 100)
+    @SequenceGenerator(name = "bookingSeqGen", sequenceName = "seq_id_booking", initialValue = 10000, allocationSize = 1)
     @GeneratedValue(generator = "bookingSeqGen")
     @Column(name = "BOOKING_ID")
     private Long bookingId;
