@@ -1,10 +1,18 @@
-# Project Title
+# Perched Peacock Parking Lot Solutions
 
-One Paragraph of project description goes here
+PerchedPeacock is a global parking solution company, manages vehicle parking across continents. 
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Download the code from git repository and setup maven project in eclipse/intellij, uses the below technologies
+1. spring boot 2
+2. Spring Oauth2
+3. Docker for containerization
+4. Jenkins standalone war for CI/CD pipeline which is part of the code base under the root folder ,needs to be launched  and create a pipeline with jenkins file from the code repository as source.
+5. Cucumber 
+6. Mapstruct for bean copy
+7. Swagger documentation of REST API
+8. Lombok , must be initialized based on the IDE used , for intellij please download the plugin and for eclipse double click on lombok jar and chose the eclipse executable.
 
 ### Prerequisites
 
