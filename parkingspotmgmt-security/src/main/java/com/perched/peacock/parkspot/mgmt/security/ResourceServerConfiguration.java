@@ -12,7 +12,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/parkingspots/**","/parkinglots/**").authenticated().antMatchers("/").permitAll();
+        http.authorizeRequests().antMatchers("/parkingspot/**","/parkinglot/**").authenticated().antMatchers("/").permitAll();
 
     }
 }
