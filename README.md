@@ -15,6 +15,7 @@ Download the code from git repository and setup maven project in eclipse/intelli
 8. Swagger documentation of REST API
 9. Lombok , must be initialized based on the IDE used , for intellij please download the plugin and for eclipse double click on lombok jar and chose the eclipse executable.
 10. Angular 7 for User interface 
+11.Liquibase
 
 See Installing section for more information
 
