@@ -1,6 +1,16 @@
 # Perched Peacock Parking Lot Solutions
 
-PerchedPeacock is a global parking solution company, manages vehicle parking across continents. A java based simple software with REST API service and swagger documentation as backend and Angular for User Interface
+PerchedPeacock is a global parking solution company, manages vehicle parking across continents. A java based simple software with REST API service (with swagger documentation ) as backend and Angular for User Interface @ https://github.com/venkatavallabhaneni/perched-parking
+
+# Terminology and functioanlity available 
+
+Parking Lot -> Huge space or building which is organized to have many parking spots
+Parking Spot -> a Parking spot is to referred to be a spot in the lot with different sizes to park the vehicle
+Available operations -> 
+
+<ul>
+	<li>Parking lot establishment</li><li> spots creation</li><li>checking for booking availability</li><li>booking the parking spot</li><li>Parking spot eviction</li><li>Record keeping and acounting</li></ul>
+
 
 ## Getting Started
 
