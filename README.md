@@ -10,6 +10,11 @@ Available operations ->
 
 <ul>
 	<li>Parking lot establishment</li><li> spots creation</li><li>checking for booking availability</li><li>booking the parking spot</li><li>Parking spot eviction</li><li>Record keeping and acounting</li></ul>
+	
+## Simple Architecture diagram ( UI+Service , whole system)
+
+![picture](/arc.PNG)
+	
 
 
 ## Getting Started
