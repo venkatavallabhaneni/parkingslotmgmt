@@ -20,7 +20,9 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 
@@ -62,4 +64,56 @@ public class ParkingLotServiceImplTest {
         Assert.assertEquals(list.size(), result.size());
 
     }
+
+    @Test
+    public void test_Given_LotId_When_findByLotId_Return_ParkingLot() {
+
+        ParkingLot parkingLot = factory.manufacturePojoWithFullData(ParkingLot.class);
+        parkingLot.setId(123L);
+
+        doReturn(parkingLot).when(daoMock).findById(any());
+
+        ParkingLotDto result = serviceMock.findByLotId(123L);
+        Assert.assertEquals(parkingLot.getName(), result.getName());
+
+    }
+
+    @Test
+    public void test_Given_Nothing_When_findAll_ParkingLot() {
+
+        ParkingLot parkingLot = factory.manufacturePojoWithFullData(ParkingLot.class);
+        List<ParkingLot> list = new ArrayList<>();
+        list.add(parkingLot);
+
+        doReturn(list).when(daoMock).findAll();
+
+        List<ParkingLotDto> result = serviceMock.findAll();
+        Assert.assertEquals(list.size(), result.size());
+
+    }
+
+    @Test
+    public void test_Given_LotName_When_findByLotName_Return_ParkingLot() {
+
+        ParkingLot parkingLot = factory.manufacturePojoWithFullData(ParkingLot.class);
+        parkingLot.setName("YOU");
+
+        doReturn(Optional.of(parkingLot)).when(daoMock).findByName("YOU");
+
+        ParkingLotDto result = serviceMock.findByLotName("YOU");
+        Assert.assertEquals(parkingLot.getName(), result.getName());
+
+    }
+
+    @Test
+    public void test_Given_parkingLot_When_delete_Return_Boolean() {
+
+        ParkingLotDto parkingLot = factory.manufacturePojoWithFullData(ParkingLotDto.class);
+        parkingLot.setName("YOU");
+        boolean result = serviceMock.delete(parkingLot);
+        Assert.assertEquals(result, true);
+
+    }
+
+
 }
