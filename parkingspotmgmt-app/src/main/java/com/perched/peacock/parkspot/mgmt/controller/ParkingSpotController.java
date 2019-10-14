@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/parkingspot")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ParkingSpotController {
 
     private ParkingSpotService parkingSpotService;
@@ -31,6 +32,17 @@ public class ParkingSpotController {
         List<ParkingSpotDto> vacantParkingSpots = parkingSpotService.findVacantParkingSpotsByLotIdAndVehicleType(lotId, vehicleType);
 
         return vacantParkingSpots;
+    }
+
+    @PreAuthorize("#oauth2.hasScope('read')")
+    @GetMapping(value = "/{lotId}", headers = "Accept=application/json", produces = "application/json")
+    @ResponseBody
+    @ApiOperation(value = "get all parking spots in a  given lot for a vehicle size", notes = "An operation to get all parking spots in a  given lot and vehicle type ,<br>allowed vehicle types are: <ul><li>CAR</li><li>BUS</li<li>TRUCK</li><li>MOTORCYCLE</li><li>AUTO</li></ul>")
+    public List<ParkingSpotDto> getAllSpotsInaLot(@PathVariable(value = "lotId") Long lotId) {
+
+        List<ParkingSpotDto> allParkingSpots = parkingSpotService.findAllByLotId(lotId);
+
+        return allParkingSpots;
     }
 
     @PreAuthorize("#oauth2.hasScope('trust')")

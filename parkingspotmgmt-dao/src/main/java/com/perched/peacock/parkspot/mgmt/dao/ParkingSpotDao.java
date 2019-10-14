@@ -10,7 +10,9 @@ import java.util.Optional;
 
 public interface ParkingSpotDao extends CrudRepository<ParkingSpot, Number> {
 
-    ParkingLot findByParkingSpotIdAndParkingLotId(Long lotId,Long spotId);
+    ParkingSpot findByParkingSpotIdAndParkingLotId(Long lotId,Long spotId);
+
+    List<ParkingSpot> findByParkingLotId(Long lotId);
 
     Optional<List<ParkingSpot>> findVacantParkingSpotsByParkingLotIdAndParkingSpotTypeAndOccupiedIsFalse(Long lotId, SpotType spotType);
 

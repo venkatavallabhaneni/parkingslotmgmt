@@ -10,6 +10,8 @@ public interface ParkingSpotService {
 
     ParkingSpotDto findBySpotId(Long spotId);
 
+    List<ParkingSpotDto> findAllByLotId(Long lotId);
+
 
     List<ParkingSpotDto> create(List<ParkingSpotDto> parkingSpots);
 

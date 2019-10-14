@@ -68,6 +68,11 @@ public class ParkingSpotServiceImpl implements ParkingSpotService {
         return true;
     }
 
+    @Override
+    public List<ParkingSpotDto> findAllByLotId(Long lotId) {
+        List<ParkingSpot> spots = parkingSpotDao.findByParkingLotId(lotId);
+        return mapper.mapEntities2Dtos(spots);
+    }
 
     @Override
     public List<ParkingSpotDto> findVacantParkingSpotsByLotIdAndVehicleType(Long lotId, String vehicleType) {

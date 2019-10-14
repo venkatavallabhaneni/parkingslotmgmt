@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/parkinglot/records")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ParkingRecordKeepingController {
 
 

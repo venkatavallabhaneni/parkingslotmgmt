@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/parkinglot")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ParkingLotController {
 
 
